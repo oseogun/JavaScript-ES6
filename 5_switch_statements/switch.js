@@ -1,13 +1,13 @@
 /*
-* Application to demostrate Javascript switch statement(s) syntax.
-* Application sums two time values and returns them with an appropriate description.
+* Application to demostrate Javascript switch statement syntax.
+* Application returns the sum of two time values with an appropriate description.
 * Written by Ose Ogun, Apr-2019.
 */
 
 // Declare app object
 const app = {};
 
-// Check if time value is a positive integer
+// Check if time value is a positive number
 app.valueValidator = (value)=>{
 
   let response = '';
@@ -29,7 +29,7 @@ app.labelValidator = (label)=>{
   // Define full set of acceptable labels
   let labels = ['second','seconds', 'minute','minutes', 'hour', 'hours', 'day', 'days'];
 
-  // If label is not included defined list of labels change value of label to false
+  // If label is not included defined list of labels return false
   if (labels.indexOf(label) > -1){
     return label;
   } else {
@@ -39,11 +39,11 @@ app.labelValidator = (label)=>{
 
 };
 
-// Check accuray of value and label
+// Check accuracy of value and label
 app.accuracyChecker = (value,label)=>{
 
-  // Ensure the combination of value and label make sense
-  // e.g. No singular label for value greater than 1
+  // Ensure the combination of value and label is valid
+  // e.g. No singular label for value greater than 1 & vice versa
   if (value > 1 && label === 'second') {
     return false;
   }
@@ -96,10 +96,9 @@ app.convertToSeconds = (value,label)=>{
 // Format the response properly
 app.formatResponse = (value,sum)=>{
 
-  const dayFactor = 24*60*60;
-  const hourFactor = 60*60;
+  const dayFactor    = 24 * 60 * 60;
+  const hourFactor   = 60 * 60;
   const minuteFactor = 60;
-
 
   switch (true) {
 
@@ -127,7 +126,7 @@ app.formatResponse = (value,sum)=>{
 
 };
 
-// Main function which sums to valid time values together
+// Main function which sums two valid time values
 app.timeAdder = (value1, label1, value2, label2)=>{
 
   // Initialize sum
@@ -142,11 +141,12 @@ app.timeAdder = (value1, label1, value2, label2)=>{
   let labelTwo = app.labelValidator(label2);
 
   // Ensure the combination of value and label make sense
-
   if(app.accuracyChecker(timeOne, labelOne) && app.accuracyChecker(timeTwo, labelTwo)){
 
-    // Convert values to seconds;
+    // Convert values to seconds and sum them;
     let value = app.convertToSeconds(timeOne,labelOne) + app.convertToSeconds(timeTwo,labelTwo);
+
+    // Return sum in appropriate format and description
     return app.formatResponse(value,sum);
 
   } else {
@@ -158,7 +158,7 @@ app.timeAdder = (value1, label1, value2, label2)=>{
 
 };
 
-// Initialize app
+// Initialize the app
 app.init = (value1, label1, value2, label2)=>{
 
     // Print result to console
@@ -166,16 +166,16 @@ app.init = (value1, label1, value2, label2)=>{
 
 };
 
-// Demonstation
+// Demonstrations
 
-// Wrong parameters
-// 1 seconds not acceptable
+// 1) Wrong parameters
+// '1 seconds' is not acceptable
 app.init(1,'seconds',1,'hour');
 
 // Wrong parameters
-// 1 hours not acceptable
+// '1 hours' is not acceptable
 app.init(1,'second',1,'hours');
 
-// Corrrect parameters
+// 2) Correct parameters
 // 12 hours + 12 hours = 1 Day
 app.init(12, 'hours', 12, 'hours');
