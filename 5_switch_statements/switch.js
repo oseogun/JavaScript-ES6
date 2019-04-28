@@ -168,13 +168,14 @@ app.init = (value1, label1, value2, label2)=>{
 
 // Demonstation
 
-// wrong parameters
-
+// Wrong parameters
 // 1 seconds not acceptable
 app.init(1,'seconds',1,'hour');
 
+// Wrong parameters
 // 1 hours not acceptable
 app.init(1,'second',1,'hours');
 
+// Corrrect parameters
 // 12 hours + 12 hours = 1 Day
 app.init(12, 'hours', 12, 'hours');
