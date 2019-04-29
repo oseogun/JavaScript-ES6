@@ -150,7 +150,7 @@ app.timeAdder = (value1, label1, value2, label2)=>{
     return app.formatResponse(value,sum);
 
   } else {
-    sum = 'false';
+    sum = false;
   }
 
   // Return sum
