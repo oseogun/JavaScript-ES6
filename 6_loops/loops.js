@@ -4,7 +4,7 @@
 *  - For multiples of three it prints "Fizz" instead. 
 *  - For the multiples of five it prints "Buzz" instead.
 *  - For numbers which are multiples of both three and five it prints "FizzBuzz" instead.
-*  - For prime numbers (divisible only by itself and one) it print "Prime" instead. 
+*  - For prime numbers (divisible only by itself and one) it prints "Prime" instead. 
 * Written by Ose Ogun, May-2019.
 */
 
@@ -13,8 +13,7 @@
 const app = {};
 
 // Determine if a number is a prime number
-app.primeNumberUnder100 = (num) => {
-
+app.primeNumbers = (num) => {
     // Test 1 - If number is less than one return false
     if(num <= 1){
         return false;
@@ -28,13 +27,13 @@ app.primeNumberUnder100 = (num) => {
     }  
       
     // If value passes all our tests return true
-    return true
+    return true;
 };
 
 // Replace value in our list of numbers with appropriate string label
 app.replaceNumber = (value) => {
 
-    if (app.primeNumberUnder100(value)){
+    if (app.primeNumbers(value)){
        console.log("Prime");
     }
     else if ( (value % 3 == 0) && (value % 5 == 0) ){
